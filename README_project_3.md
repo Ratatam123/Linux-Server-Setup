@@ -249,7 +249,7 @@ Project requirements need the server to only allow incoming connections for SSH
     source venv/bin/activate
     ```
 
-    * all following steps are done with the virtual environment activated
+    * all following steps are done with the virtual environment being activated
 
     
     4. Installing pip in venv, then install requirements
@@ -282,9 +282,9 @@ Project requirements need the server to only allow incoming connections for SSH
             "GOOGLE_OAUTH_CLIENT_SECRET": "..."
     }
     ```
-    3. In *config.py* from project folder (*/home/grader/webapp/happyrent/property_project/config.py*) 
+    3. In *config.py* from the project folder ( */home/grader/webapp/happyrent/property_project/config.py* ) 
     add following code schema on the top after the first imports. The other environment variables mentioned
-    in the json not listed need to be set in the same way *config.get(..)*.
+    in the json and only implied by *...* below need to be set in the same way *... = config.get(..)*.
 
     ```python
     
