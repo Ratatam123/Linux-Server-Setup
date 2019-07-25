@@ -193,7 +193,7 @@ Project requirements need the server to only allow incoming connections for SSH
     sudo ufw allow 80/tcp
     ``` 
 
-## Setup git & clone the repository of the *flask web app*
+## Setup git & clone the repository of the *flask web app* (8.-9.)
 
 8. Installing Git
     1.
@@ -235,7 +235,7 @@ Project requirements need the server to only allow incoming connections for SSH
         * alles in virtual environment packen
         * installation von requirements, 
 
-## 
+## Set up virtual environment, installing requirements, updating *config.py* file in the *flask* application (10.-11.)
 
 10. Creating virtual environment on server
     
@@ -270,39 +270,39 @@ Project requirements need the server to only allow incoming connections for SSH
     ```console
     pip3 install -r requirements.txt
     ```
-* 11) Set up config file on server to store configuration data for the *flask* app
+11. Set up config file on server to store configuration data for the *flask* app
 (personal setup)
 
-1. 
-```console
-sudo touch /etc/config.json
-```
+    1. 
+    ```console
+    sudo touch /etc/config.json
+    ```
 
-2. 
-```console
-sudo nano /etc/config.json
-```
+    2. 
+    ```console
+    sudo nano /etc/config.json
+    ```
 
-3. Write config info in json format
+    3. Write config info in json format
 
-```json
-{
-        "SECRET_KEY": "579...",
-        "GOOGLE_OAUTH_CLIENT_ID": "...",
-        "GOOGLE_OAUTH_CLIENT_SECRET": "..."
-}
-```
-* in config file from project folder (*/home/grader/webapp/happyrent/property_project/config.py*)
+    ```json
+    {
+            "SECRET_KEY": "579...",
+            "GOOGLE_OAUTH_CLIENT_ID": "...",
+            "GOOGLE_OAUTH_CLIENT_SECRET": "..."
+    }
+    ```
+    * in config file from project folder (*/home/grader/webapp/happyrent/property_project/config.py*) add code on top after the first imports
 
-```python
-...
-import json
-with open('/etc/config.json') as config_file:
-        config = json.load(config_file)
-class Config:
-    SECRET_KEY = config.get('SECRET_KEY')
+    ```python
     ...
-```
+    import json
+    with open('/etc/config.json') as config_file:
+            config = json.load(config_file)
+    class Config:
+        SECRET_KEY = config.get('SECRET_KEY')
+        ...
+    ```
 
 ## *Nginx* & *Gunicorn*
 
@@ -388,9 +388,7 @@ gunicorn the Python code.
 
 13. Set up posgresql (to replace sqlite used so far) 
 
-    1. Install postgres
-
-    * Install postgres & packages needed for Python to work with psql 
+    1. Install postgres & packages needed for Python to work with psql 
 
     ```console
     sudo apt-get install libpq-dev python-dev
@@ -433,13 +431,13 @@ gunicorn the Python code.
     CREATE DATABASE happyrent_db WITH OWNER happy_renter;
     ```
 
-    * connect to database
+    3. connect to database
+    
     ```psql
     \c happyrent_db
     ```
-        connected as user 'postgres'??
-
-    * revoke rights for 'public'
+    
+    4. revoke rights for 'public'
     ```psql
     REVOKE ALL ON SCHEMA public FROM public;
     ```
@@ -454,6 +452,8 @@ gunicorn the Python code.
     GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO happy_renter;
     ``` -->
 
+    5. quit postgres
+    
     ```psql
     \q
     ```
@@ -462,7 +462,7 @@ gunicorn the Python code.
      exit
     ```
 
-    * replace address of old sqlite database address by new psql-db address in config.py
+    6. replace address of old sqlite database address by new psql-db address in *config.py* of *flask* app
 
     ```console
     sudo nano config.py
@@ -473,7 +473,7 @@ gunicorn the Python code.
     SQLALCHEMY_DATABASE_URI = 'postgresql://happy_renter:best_rentsd@localhost/happyrent_db'
     ```
 
-    * Clean bug in routes.py appearing when using *postgres* instead of *sqlite* 
+    7. Clean bug in *routes.py* appearing when using *postgres* instead of *sqlite* 
 
     * OLD code
 
@@ -545,7 +545,7 @@ domain name to get Google OAuth working
 
     * Visit http://18.196.69.164.xip.io to see the web app in action
 
-
+<!-- 
 ## Logging in
 
 ```
@@ -555,12 +555,11 @@ ssh -i ~/.ssh/udacity_grader_key.rsa grader@18.196.69.164 -p2200
 ```
 cd webapp/happyrent
 ```
-
 ```
 source venv/bin/activate
 ```
 
-
+ -->
 ## References
 
 Flask Video Tutorials by Corey Schafer:
