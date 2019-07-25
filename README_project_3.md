@@ -150,7 +150,7 @@ described below.
     ```console
     sudo nano /home/grader/.ssh/authorized_keys
     ```
-    As a shortcut for iii. & iv. you can instead use the command [ssh-copy-id](https://www.ssh.com/ssh/copy-id)
+        As a shortcut for iii. & iv. you can instead use the command [ssh-copy-id](https://www.ssh.com/ssh/copy-id)
 
     5. Define permissions (remote) (wiederholen was hier passiert!)
 
