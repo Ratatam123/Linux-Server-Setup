@@ -67,14 +67,15 @@ described below.
     ```console
     sudo nano /etc/ssh/sshd_config
     ```
-    * Set *PasswordAuthentication* to *no*
     
-    * Restart with updated config (remote)
+    4. Set *PasswordAuthentication* to *no*
+    
+    5. Restart with updated config (remote)
     ```console
     sudo service ssh restart
     ``` 
 
-    * Try connecting in another Terminal window from the local machine
+    6. Try connecting in another Terminal window from the local machine
     ```console
     ssh -i ~/.ssh/udacity_linux_key.rsa ubuntu@18.196.69.164 -p2200
     ```
@@ -105,9 +106,9 @@ described below.
     available, but the version installed currently has been locally modified."
         * I chose "keep the local version currently installed" -->
 
-4. create user grader and grant him sudo permissions (remote)
+4. Create user grader and grant him sudo permissions (remote)
     
-    1. * creation of user
+    1. Creation of user
     ```console
     sudo adduser grader
     ```
@@ -119,12 +120,13 @@ described below.
     ```console
     sudo nano /etc/sudoers.d/grader
     ```
-        * add following line to the file & save it
+    
+    3. Add following line to the file & save it
 
     ```console
     grader ALL=(ALL:ALL) ALL
     ```
-    "any user can run any command on any host as any user"
+    <!-- "any user can run any command on any host as any user" -->
     
 
 5. Set UTC and local time
@@ -144,22 +146,22 @@ described below.
     ssh-keygen -f ~/.ssh/udacity_grader_key.rsa
     ```
 
-    2. * create directory *.ssh* for keys (remote)
+    2. Create directory *.ssh* for keys (remote)
     ```console
     sudo mkdir /home/grader/.ssh
     ```
-    3. * open & copy contents from local udacity_grader_key.rsa.pub file (local)
+    3. Open & copy contents from local udacity_grader_key.rsa.pub file (local)
     ```console
     cat ~/.ssh/udacity_grader_key.rsa.pub
     ```
 
-    4. * create new file and paste them into it (remote)
+    4. Create new file and paste them into it (remote)
     ```console
     sudo nano /home/grader/.ssh/authorized_keys
     ```
-    * As a shortcut for 3. & 4., you can instead use the command [ssh-copy-id](https://www.ssh.com/ssh/copy-id)
+    * As a shortcut for iii. & iv. you can instead use the command [ssh-copy-id](https://www.ssh.com/ssh/copy-id)
 
-    5. * define permissions (remote) (wiederholen was hier passiert!)
+    5. Define permissions (remote) (wiederholen was hier passiert!)
 
     ```console
     sudo chmod 700 /home/grader/.ssh
@@ -167,12 +169,12 @@ described below.
     ```
     [Info on permissions](http://www.thinkplexx.com/learn/article/unix/command/chmod-permissions-flags-explained-600-0600-700-777-100-etc)
     
-    6. * and change ownership and group to grader (... root user to grader)
+    6. and change ownership and group to grader (... root user to grader)
     ```console
     sudo chown -R grader:grader /home/grader/.ssh
     ```
 
-    7. * logging in to lightsail instance is now enabled via: 
+    7. Logging in to lightsail instance is now enabled via: 
     ```console
     ssh -i ~/.ssh/udacity_grader_key.rsa grader@18.196.69.164 -p2200
     ```
