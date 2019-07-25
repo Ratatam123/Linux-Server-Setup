@@ -284,7 +284,7 @@ Project requirements need the server to only allow incoming connections for SSH
     ```
     3. In *config.py* from the project folder ( */home/grader/webapp/happyrent/property_project/config.py* ) 
     add following code schema on the top after the first imports. The other environment variables mentioned
-    in the json and only implied by *...* below need to be set in the same way *... = config.get(..)*.
+    in the json and only implied by *...* below need to be set in the same way *... = config.get(...)*.
 
     ```python
     
@@ -298,10 +298,10 @@ Project requirements need the server to only allow incoming connections for SSH
 
 ## *Nginx* & *Gunicorn*
 
-12. Installing & setting up *nginx* & *gunicorn*. Nginx processes static code (css, images etc.), 
-gunicorn the Python code.
+12. Installing & setting up *Nginx* & *Gunicorn*. Nginx processes static code (css, images etc.), 
+Gunicorn the Python code.
 
-    1. Install nginx (global installiert) & gunicorn
+    1. Install Nginx & Gunicorn
 
     ```console
     sudo apt install nginx
@@ -311,9 +311,7 @@ gunicorn the Python code.
     pip3 install --user gunicorn
     ```
 
-    2. Remove default config files & create new one
-
-    *  for nginx
+    2. Remove default config files & create new one for Nginx
 
     ```console
     sudo rm /etc/nginx/sites-enabled/default
@@ -423,13 +421,13 @@ gunicorn the Python code.
     # CREATE DATABASE happyrent_db WITH OWNER happy_renter;
     ```
 
-    4. connect to database
+    4. Connect to database
     
     ```console
     # \c happyrent_db
     ```
     
-    5. revoke rights for 'public'
+    5. Revoke rights for 'public' & grant rights to user 'happy_renter'
     ```console
     # REVOKE ALL ON SCHEMA public FROM public;
     ```
@@ -577,7 +575,7 @@ Project Setup guides:
 &nbsp;&nbsp;&nbsp;&nbsp;[By github user *Iliketomatoes*](https://github.com/iliketomatoes/linux_server_configuration)
 
 
-### Bonus
+## Bonus
 
 16. Install & set up *supervisor* to serve app automatically/permanently
     
