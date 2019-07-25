@@ -273,17 +273,17 @@ Project requirements need the server to only allow incoming connections for SSH
 11. Set up config file on server to store configuration data for the *flask* app
 (personal setup)
 
-    1. 
+    1. Create & open config.json
+
     ```console
     sudo touch /etc/config.json
     ```
-
-    2. 
+    
     ```console
     sudo nano /etc/config.json
     ```
 
-    3. Write config info in json format
+    2. Write config info in json format
 
     ```json
     {
@@ -292,10 +292,12 @@ Project requirements need the server to only allow incoming connections for SSH
             "GOOGLE_OAUTH_CLIENT_SECRET": "..."
     }
     ```
-    * in config file from project folder (*/home/grader/webapp/happyrent/property_project/config.py*) add code on top after the first imports
+    3. In *config.py* from project folder (*/home/grader/webapp/happyrent/property_project/config.py*) 
+    add following code schema on the top after the first imports. The other environment variables mentioned
+    in the json not listed need to be set in the same way *config.get(..)*.
 
     ```python
-    ...
+    
     import json
     with open('/etc/config.json') as config_file:
             config = json.load(config_file)
@@ -309,7 +311,7 @@ Project requirements need the server to only allow incoming connections for SSH
 12. Installing & setting up *nginx* & *gunicorn*. Nginx processes static code (css, images etc.), 
 gunicorn the Python code.
 
-    1. install nginx (global installiert) & gunicorn
+    1. Install nginx (global installiert) & gunicorn
 
     ```console
     sudo apt install nginx
@@ -331,7 +333,7 @@ gunicorn the Python code.
     sudo nano /etc/nginx/sites-enabled/happyrent
     ```
 
-    * put in following setup: 
+    3. Put in following setup: 
 
     * generic
 
@@ -353,6 +355,7 @@ gunicorn the Python code.
     ```
 
     * specific
+
     ```
     server {
         listen 80;
@@ -370,7 +373,7 @@ gunicorn the Python code.
     }
     ```
 
-    3. Update firewall & restart nginx
+    3. Update firewall & restart *Nginx*
 
     ```console
     sudo ufw allow http/tcp
@@ -406,44 +409,43 @@ gunicorn the Python code.
     sudo -u postgres createuser -s $USER
     ```
 
-    2. Open postgres, create a user & a database 
+    2. Open postgres, create a user & grant him right to create databases 
 
     ```console
     sudo su - postgres
     ```
-    * open posgresql
+    <!-- * open posgresql -->
     ```console
     psql
     ```
-    * create user
-    ```psql
-    CREATE USER happy_renter WITH PASSWORD 'best_rents';
+    <!-- * create user -->
+    ```console
+    # CREATE USER happy_renter WITH PASSWORD 'best_rents';
     ```
 
-    * grant the user CREATEDB capability
-
-    ```psql
-    ALTER USER happy_renter CREATEDB;
-    ```
-    * create database
-
-    ```psql
-    CREATE DATABASE happyrent_db WITH OWNER happy_renter;
-    ```
-
-    3. connect to database
-    
-    ```psql
-    \c happyrent_db
+    ```console
+    # ALTER USER happy_renter CREATEDB;
     ```
     
-    4. revoke rights for 'public'
-    ```psql
-    REVOKE ALL ON SCHEMA public FROM public;
+    3. Create database
+
+    ```console
+    # CREATE DATABASE happyrent_db WITH OWNER happy_renter;
     ```
 
-    ```psql
-    GRANT ALL ON SCHEMA public TO happy_renter;
+    4. connect to database
+    
+    ```console
+    # \c happyrent_db
+    ```
+    
+    5. revoke rights for 'public'
+    ```console
+    # REVOKE ALL ON SCHEMA public FROM public;
+    ```
+
+    ```console
+    # GRANT ALL ON SCHEMA public TO happy_renter;
     ```
 
     <!-- * NEU:
@@ -452,17 +454,17 @@ gunicorn the Python code.
     GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO happy_renter;
     ``` -->
 
-    5. quit postgres
+    6. quit postgres
     
-    ```psql
-    \q
+    ```console
+    # \q
     ```
 
     ```console
      exit
     ```
 
-    6. replace address of old sqlite database address by new psql-db address in *config.py* of *flask* app
+    7. replace address of old sqlite database address by new psql-db address in *config.py* of *flask* app
 
     ```console
     sudo nano config.py
@@ -473,7 +475,7 @@ gunicorn the Python code.
     SQLALCHEMY_DATABASE_URI = 'postgresql://happy_renter:best_rentsd@localhost/happyrent_db'
     ```
 
-    7. Clean bug in *routes.py* appearing when using *postgres* instead of *sqlite* 
+    8. Clean bug in *routes.py* appearing when using *postgres* instead of *sqlite* 
 
     * OLD code
 
@@ -537,7 +539,7 @@ domain name to get Google OAuth working
 
 15. Run the web app with *gunicorn*
 
-    * make sure you are in the following directory: */home/grader/webapp/happyrent*
+    1. Make sure you are in the following directory: */home/grader/webapp/happyrent*
 
     ```console
     gunicorn -w 1 run:app
@@ -587,42 +589,48 @@ Project Setup guides:
 ### Bonus
 
 15.  Install & set up *supervisor* to serve app automatically/permanently
+    
+    1. Install *supervisor*
 
-```console
-sudo apt install supervisor
-```
+    ```console
+    sudo apt install supervisor
+    ```
 
-* update config for supervisor
-```console
-sudo nano /etc/supervisor/conf.d/happyrent.conf
-```
+    2. update config for *supervisor*
 
-```
-[program:happyrent]
-directory=/home/grader/webapp/happyrent
-command=/home/grader/webapp/happyrent/venv/bin/gunicorn -w 1 run:app
-user=grader
-autostart=true
-autorestart=true
-stopasgroup=true
-killasgroup=true
-stderr_logfile=/var/log/happyrent/happyrent.err.log
-stdout_logfile=/var/log/happyrent/happyrent.out.log
-```
+    ```console
+    sudo nano /etc/supervisor/conf.d/happyrent.conf
+    ```
 
-* create log-files
-```console
-sudo mkdir -p /var/log/happyrent
-```
-```console
-sudo touch /var/log/happyrent/happyrent.err.log
-```
-```console
-sudo touch /var/log/happyrent/happyrent.out.log
-```
+    ```
+    [program:happyrent]
+    directory=/home/grader/webapp/happyrent
+    command=/home/grader/webapp/happyrent/venv/bin/gunicorn -w 1 run:app
+    user=grader
+    autostart=true
+    autorestart=true
+    stopasgroup=true
+    killasgroup=true
+    stderr_logfile=/var/log/happyrent/happyrent.err.log
+    stdout_logfile=/var/log/happyrent/happyrent.out.log
+    ```
 
-```console
-sudo supervisorctl reload
-```
+    3. create log-files
+    
+    ```console
+    sudo mkdir -p /var/log/happyrent
+    ```
+    ```console
+    sudo touch /var/log/happyrent/happyrent.err.log
+    ```
+    ```console
+    sudo touch /var/log/happyrent/happyrent.out.log
+    ```
+
+    4. restart
+
+    ```console
+    sudo supervisorctl reload
+    ```
 
 
