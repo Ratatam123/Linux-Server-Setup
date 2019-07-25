@@ -571,14 +571,15 @@ Flask Video Tutorials by Corey Schafer:
 &nbsp;&nbsp;&nbsp;&nbsp;[supervisor config](https://github.com/CoreyMSchafer/code_snippets/blob/master/Python/Flask_Blog/snippets/supervisor.conf)
 
 
-DNS via xip.io
+DNS via xip.io:
+
 &nbsp;&nbsp;&nbsp;&nbsp;[xip.io](https://serversforhackers.com/c/xipio-and-wildcard-subdomains-for-development)
 
 postgresql
 
 &nbsp;&nbsp;&nbsp;&nbsp;[Tutorial by DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04) 
 &nbsp;&nbsp;&nbsp;&nbsp;[Tutorial by Steven Loria](http://killtheyak.com/use-postgresql-with-django-flask/)
-&nbsp;&nbsp;&nbsp;&nbsp;[postgresql](https://medium.com/@nitinraturi/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-14-04-77146b5565a0)
+&nbsp;&nbsp;&nbsp;&nbsp;[Tutorial by Nitin Raturi](https://medium.com/@nitinraturi/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-14-04-77146b5565a0)
 
 Project Setup guides:
 
