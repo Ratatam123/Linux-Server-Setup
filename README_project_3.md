@@ -197,25 +197,23 @@ Project requirements need the server to only allow incoming connections for SSH
 
 ## Setup git & clone the repository of the *flask web app* (8.-9.)
 
-8. Installing Git
-    1.
+8. Installing Git, configure username and email
+    
     ```console
     sudo apt-get install git
     ```
 
-    2. Configuring username:
     ```console
     git config --global user.name <username>
     ```
 
-    3. Configuring email:
     ```console
     config --global user.email <email>
     ``` 
 
 9. Cloning the app 
     
-    1. create directory for the app & change its ownership and group to grader
+    1. Create directory for the app & change its ownership and group to grader
 
     ```console
     sudo mkdir /home/grader/webapp
@@ -233,9 +231,7 @@ Project requirements need the server to only allow incoming connections for SSH
     ```console
     git clone https://github.com/Ratatam123/HappyRent.git HappyRent
     ```
-    * Merke: 
-        * alles in virtual environment packen
-        * installation von requirements, 
+
 
 ## Set up virtual environment, installing requirements, updating *config.py* file in the *flask* application (10.-11.)
 
