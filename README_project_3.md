@@ -9,7 +9,7 @@ in the previous project of the course.
 ### Info
 
 * The guide below presupposes that one has created an account on *Amazon Web Services (AWS)*  
-and a *lightsail* instance within AWS. Personally I chose Ubuntu 16.04 as 
+and a *lightsail* instance within AWS. Personally I chose Ubuntu 16.04 for the server's OS.
 
 * Some of the steps are performed from a local Terminal window, others from
 a Terminal window connected to the Ubuntu server via *ssh*. To distinguish the
@@ -23,7 +23,7 @@ described below.
 * URL: 18.196.69.164.xip.io
 * SSH Port: 2200
 
-* Connection to server via terminal (after step 6 of setup):
+* Connection to server via Terminal (after step 6 of setup):
 ```console
     ssh -i ~/.ssh/udacity_grader_key.rsa grader@18.196.69.164 -p2200
 ``` 
@@ -68,14 +68,14 @@ described below.
     sudo nano /etc/ssh/sshd_config
     ```
     
-    4. Set *PasswordAuthentication* to *no*
+    3. Set *PasswordAuthentication* to *no* & and *Port* to *2200*
     
-    5. Restart with updated config (remote)
+    4. Restart with updated config (remote)
     ```console
     sudo service ssh restart
     ``` 
 
-    6. Try connecting in another Terminal window from the local machine
+    5. Try connecting in another Terminal window from the local machine
     ```console
     ssh -i ~/.ssh/udacity_linux_key.rsa ubuntu@18.196.69.164 -p2200
     ```
@@ -90,21 +90,13 @@ described below.
     ```console
     sudo apt-get upgrade
     ```
-    * Ubuntu 16.04:
-    * pop-up "keep the local version currently installed"
+    * For the Pop-up appearing in upgrading Ubuntu 16.04 I chose the option "keep the local version currently installed"
 
-    * install Finger (explain what for...?)
+    <!--     * install Finger (explain what for...?)
 
     ```console
     sudo apt-get install finger
-    ```
-    <!-- * Ubuntu 18.04:
-    * Pop Up: " Restart services during package upgrades without asking? "
-        * I chose "Yes" option
-
-    * Pop Up: "A new version (/tmp/filein3TUB) of configuration file /etc/ssh/sshd_config is   │ 
-    available, but the version installed currently has been locally modified."
-        * I chose "keep the local version currently installed" -->
+    ``` -->
 
 4. Create user grader and grant him sudo permissions (remote)
     
@@ -112,10 +104,9 @@ described below.
     ```console
     sudo adduser grader
     ```
-        * Choose a password & type it in twice
+    * Choose a password & type it in twice
 
-    2. Define reading & writing rights:
-        * Create a new file under the suoders directory
+    2. Define reading & writing rights: create a new file under the suoders directory
     
     ```console
     sudo nano /etc/sudoers.d/grader
@@ -159,7 +150,7 @@ described below.
     ```console
     sudo nano /home/grader/.ssh/authorized_keys
     ```
-    * As a shortcut for iii. & iv. you can instead use the command [ssh-copy-id](https://www.ssh.com/ssh/copy-id)
+    As a shortcut for iii. & iv. you can instead use the command [ssh-copy-id](https://www.ssh.com/ssh/copy-id)
 
     5. Define permissions (remote) (wiederholen was hier passiert!)
 
