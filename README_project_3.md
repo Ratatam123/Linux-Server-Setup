@@ -589,7 +589,7 @@ Project Setup guides:
 
 ### Bonus
 
-15.  Install & set up *supervisor* to serve app automatically/permanently
+16.  Install & set up *supervisor* to serve app automatically/permanently
     
     1. Install *supervisor*
 
