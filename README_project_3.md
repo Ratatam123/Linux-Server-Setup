@@ -6,16 +6,22 @@ This Project is the final part of Udacity's *full stack webdevelopment* course.
 It consists in the configuration of a Linux Server hosting the web app created
 in the previous project of the course. 
 
-## Prerequisites
-* Virtual Box 
-* Vagrant
-* Python 3 installation in Vagrant environment
-* (Unix style) Shell
+### Info
 
-## Aufgabenstellung README
+* The guide below presupposes that one has created an account on *Amazon Web Services* 
+and a *lightsail* instance. Personally I chose Ubuntu 16.04 as 
+
+* Info: Some of the steps are performed from a local Terminal window, others from
+a Terminal window connected to the Ubuntu server via *ssh*. To distinguish the
+two types, former will be tagged with *local*, letter with *remote* in the steps
+described below.
+
+* venv auch erwaehnen??
+
+<!-- ## Aufgabenstellung README
 A README file is included in the GitHub repo containing the following information: 
 IP address, URL, summary of software installed, summary of configurations made, 
-and a list of third-party resources used to complete this project.
+and a list of third-party resources used to complete this project. -->
 
 ### Basic Info
 * Server name: Ubuntu_16.04
@@ -31,24 +37,9 @@ and a list of third-party resources used to complete this project.
 paste the contents of the grader user's SSH key into the "Notes to Reviewer" field."
 
 
+## Steps to take
 
-
-
-### Info
-
-* The guide below presupposes that one has created an account on *Amazon Web Services* 
-and a *lightsail* instance. Personally I chose Ubuntu 16.04 as 
-
-* Info: Some of the steps are performed from a local Terminal window, others from
-a Terminal window connected to the Ubuntu server via *ssh*. To distinguish the
-two types, former will be tagged with *local*, letter with *remote* in the steps
-described below.
-
-* venv auch erwaehnen??
-
-### Steps to take
-
-* 1) Access the server from local Terminal
+1. Access the server from local Terminal
     
     1. Download the default ssh key from AWS => Account => SSH keys
     
