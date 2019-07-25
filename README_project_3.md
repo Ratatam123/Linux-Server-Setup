@@ -589,7 +589,7 @@ Project Setup guides:
 
 ### Bonus
 
-16.  Install & set up *supervisor* to serve app automatically/permanently
+16. Install & set up *supervisor* to serve app automatically/permanently
     
     1. Install *supervisor*
 
@@ -616,7 +616,7 @@ Project Setup guides:
     stdout_logfile=/var/log/happyrent/happyrent.out.log
     ```
 
-    3. create log-files
+    3. Create log-files
     
     ```console
     sudo mkdir -p /var/log/happyrent
@@ -628,7 +628,7 @@ Project Setup guides:
     sudo touch /var/log/happyrent/happyrent.out.log
     ```
 
-    4. restart
+    4. Restart
 
     ```console
     sudo supervisorctl reload
