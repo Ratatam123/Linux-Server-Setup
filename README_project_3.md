@@ -150,9 +150,9 @@ described below.
     ```console
     sudo nano /home/grader/.ssh/authorized_keys
     ```
-        As a shortcut for iii. & iv. you can instead use the command [ssh-copy-id](https://www.ssh.com/ssh/copy-id)
+    * As a shortcut for iii. & iv. you can instead use the command [ssh-copy-id](https://www.ssh.com/ssh/copy-id)
 
-    5. Define permissions (remote) (wiederholen was hier passiert!)
+    5. Define permissions (remote)
 
     ```console
     sudo chmod 700 /home/grader/.ssh
@@ -178,7 +178,7 @@ Project requirements need the server to only allow incoming connections for SSH
 (port 2200), HTTP (port 80), and NTP (port 123).
 
     ```console
-    sudo ufw default allow outgoing (vgl. Aufgabenstellung)
+    sudo ufw default allow outgoing
     sudo ufw allow ssh
     sudo ufw allow www
     sudo ufw allow 2200/tcp
@@ -234,7 +234,7 @@ Project requirements need the server to only allow incoming connections for SSH
     sudo apt install --upgrade python3-pip
     ```
 
-    2. Install module *venv* for creating virtual environment 
+    2. Install module *venv* for creating a virtual environment 
     
     ```console
     sudo apt install python3-venv
@@ -251,6 +251,7 @@ Project requirements need the server to only allow incoming connections for SSH
 
     * all following steps are done with the virtual environment activated
 
+    
     4. Installing pip in venv, then install requirements
 
     ```console
