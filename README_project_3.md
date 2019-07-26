@@ -104,7 +104,7 @@ described below.
     ```console
     sudo adduser grader
     ```
-    * Choose a password & type it in twice
+    * Choose a password & type it in twice (Mine was 'gr8_grader')
 
     2. Define reading & writing rights: create a new file under the suoders directory
     
