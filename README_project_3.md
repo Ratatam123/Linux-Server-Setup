@@ -85,7 +85,7 @@ described below.
 3. Update packages (remote)
     
     ```console
-    sudo apt-get update
+    sudo apt-get dist-upgrade
     ```
     ```console
     sudo apt-get upgrade
